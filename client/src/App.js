@@ -14,7 +14,7 @@ export default function App() {
   /**
    * Create a variable here that holds the contract address after you deploy!
    */
-  const contractAddress = "0xAbA3A02bA93E1dA02419EaFe25ba2caae569228A";
+  const contractAddress = "0x4f9a53DEC1fEb20c173fB7187ce60A7Aeae4a25f";
 
   /**
    * Create a variable here that references the abi content!
@@ -242,19 +242,21 @@ export default function App() {
         )}
 
         {!isLoading &&
-          allWaves.map((wave, index) => {
-            return (
-              <div key={index} className="msgCard">
-                <div>
-                  Address: {wave.address.substring(0, 5)}
-                  {"..."}
-                  {wave.address.substring(37, 42)}
+          allWaves
+            .map((wave, index) => {
+              return (
+                <div key={index} className="msgCard">
+                  <div>
+                    Address: {wave.address.substring(0, 5)}
+                    {"..."}
+                    {wave.address.substring(37, 42)}
+                  </div>
+                  <div>Time: {wave.timestamp.toString()}</div>
+                  <div>Message: {wave.message}</div>
                 </div>
-                <div>Time: {wave.timestamp.toString()}</div>
-                <div>Message: {wave.message}</div>
-              </div>
-            );
-          })}
+              );
+            })
+            .reverse()}
 
         {isLoading && <Loader />}
       </div>
